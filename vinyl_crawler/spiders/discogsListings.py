@@ -2,7 +2,7 @@ import scrapy
 from vinyl_crawler.items import Listing
 
 class RecordlistingsPySpider(scrapy.Spider):
-    name = 'recordListings.py'
+    name = 'discogsListings'
     allowed_domains = ['www.discogs.com']
     listings = []
 
@@ -49,24 +49,28 @@ class RecordlistingsPySpider(scrapy.Spider):
         'RoughTradeNYC', 'MUSICONNECTION', 'longgoneday1', 'swoopy', 
         'Black_Gold_Brooklyn', 'Psychic_Brooklyn', 'almostready', 'ez2collect2', 
         'LooneyTunesCDs', 'justtracks', 'thevinylplant', 'DeepCutsRecordStore', 
-        'hopfidelity', 'electric_avenue', 'ByrdlandRecords', 'Jointcustodydc', 'smashdc', 
-        'RecordExchangeofSS', 'Mobius_Records', 'donutshoppe', 'IRREst.2022', 'thewaxhut', 
+        'hopfidelity', 'electric_avenue', 'ByrdlandRecords', 'Jointcustodydc', 
+        'RecordExchangeofSS', 'Mobius_Records', 'donutshoppe', 'IRREst.2022',  
         'innergrooverecs', 'skyvalley420', 'timzatz', 'tunesonline', 'recordmuseum', 
         'phidelityrecords', 'Factory-Record', 'vinyl_dinosaur', 'clariziomusic', 
         'EastonExchange', 'doubledeckerrecords', 'RECREV', 'Young-Ones-Records', 
-        'VertigoMusic449', 'WhitsEndTrading', 'impulsebuyrecords', 'dreaminghuman', 
-        'Lititz_Music_Co.', 'MUSICALENERGIdotCOM', 'rebrecords-md', 'thevinylgarageus', 
-        'admiralanalogs', 'FuzzyDogVintage', 'RecordExchangeofSS', 'YellowKShop', 
-        'solarmountainrecords', 'recordsfromjupiter', 'rainbowrecordsde', 'extendedplay19971', 
-        'philadelphiamusic', 'brewerytownbeats', 'creep-records', 'MilkcrateCafe', 'vinylaltar', 
-        'commonbeatmusic', 'sitandspinrecords', 'Betternowrecords', 'impressionsphilly',
-        'BullTrax', 'CTshop45s', 'bordentownrecords', 'pop.market', 'BrothersRecords',
-        'VinylShopUS', 'kennyosrecords', 'stevierayvinyl', 'mhamilamelton' ,'dorightman',
-        'recordsbymail', 'AlexanderCogs', 'Rose.Thyme', 'foreveryoungrecords', 'super.soul.records',
-        'lewisdene', 'Niksvinyl', 'ShinylVinyl', 'CD_WAREHOUSE_817' ,'MRCLEANWAX',
-        'ryanrecords', 'Boom_Service' ,'Armo-15' ,'Honeysmush_Records', 'GROOVEENT',
-        'cjohnson22463', 'letitberarities', 'Kozuch438', 'Redscroll', 'kent221',
-        'mstaurolite']
+        'VertigoMusic449', 'WhitsEndTrading', 'impulsebuyrecords', 
+        'Lititz_Music_Co.', 'MUSICALENERGIdotCOM', 'rebrecords-md', 
+        'thevinylgarageus', 'admiralanalogs', 'FuzzyDogVintage',  'smashdc',
+        'RecordExchangeofSS', 'YellowKShop', 'solarmountainrecords', 
+        'recordsfromjupiter','rainbowrecordsde', 'extendedplay19971', 
+        'philadelphiamusic', 'brewerytownbeats', 'creep-records', 
+        'MilkcrateCafe', 'vinylaltar', 'commonbeatmusic', 'dreaminghuman', 
+        'sitandspinrecords', 'Betternowrecords', 'impressionsphilly',
+        'BullTrax', 'CTshop45s', 'bordentownrecords', 'pop.market', 
+        'VinylShopUS', 'kennyosrecords', 'stevierayvinyl', 'mhamilamelton',
+        'dorightman', 'recordsbymail', 'AlexanderCogs', 'Rose.Thyme', 
+        'foreveryoungrecords', 'super.soul.records', 'thewaxhut',
+        'lewisdene', 'Niksvinyl', 'ShinylVinyl', 'BrothersRecords',
+        'CD_WAREHOUSE_817' , 'MRCLEANWAX', 'ryanrecords', 
+        'Boom_Service' ,'Armo-15' ,'Honeysmush_Records', 'GROOVEENT',
+        'cjohnson22463', 'letitberarities', 'Kozuch438', 
+        'Redscroll', 'kent221', 'mstaurolite']
 
         for url in urls:
             for genre in genres:
