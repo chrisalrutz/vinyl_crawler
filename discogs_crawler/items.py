@@ -6,7 +6,13 @@
 import scrapy
 
 
-class DiscogsCrawlerItem(scrapy.Item):
+class Listing(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    title = scrapy.Field()
+    labelCat = scrapy.Field()
+    itemCatNo = scrapy.Field()
+    sleeveCondition = scrapy.Field()
+    rUrl = scrapy.Field()
+    price = scrapy.Field()
+
     pass
