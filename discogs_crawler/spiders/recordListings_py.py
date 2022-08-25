@@ -7,12 +7,64 @@ class RecordlistingsPySpider(scrapy.Spider):
     listings = []
 
     def start_requests(self):
-        urls = ['https://www.discogs.com/seller/philadelphiamusic/profile?format=Vinyl&genre=Electronic',
-                'https://www.discogs.com/seller/philadelphiamusic/profile?format=Vinyl&genre=Hip+Hop',
-                'https://www.discogs.com/seller/philadelphiamusic/profile?format=Vinyl&genre=Jazz',
+        urls = [
+                'https://www.discogs.com/seller/'
                 ]
+        genres = ['&genre=Electronic',
+                  '&genre=Hip+Hop',
+                  '&genre=Jazz',
+                  '&genre=Folk%2C+World%2C+%26+Country',
+                  '&genre=Classical',
+                  '&genre=Stage+%26+Screen',
+                  '&genre=Blues',
+                  '&genre=Non-Music',
+                  '&genre=Reggae',
+                  '&genre=Children%27s',
+                  '&genre=Brass+%26+Military'
+                  '&genre=Funk+%2F+Soul',
+                  '&genre=Pop',
+                  '&genre=Rock',
+                  ]
+
+        sellers = ['Criminal-Rewind', 'ellaguru', 'Morpho_Chicago',
+                   'RoundTripRecords', 'ToneDeafRecords', 'Wild_Prairie', 
+                   'BucketOBlood', 'Meteor_Gem', 'lets_boogie_records', 'vvmo', 
+                   'Treasuregate', 'ShadyRest.Chicago', '606records', 'bluevillagevinyl', 
+                   'cheapkissrecords', 'TheConservatoryVinyl', 'thedenrecords', 'trustyspot', 
+                   'WeirdsvilleRecords', 'DetroitRecordClub', 'UHF-Records', 'streetcorner12', 
+                   'bradhales', 'dearbornm-farmington', 'RockCityMusicCo', 'Hoppingator', 
+                   'dearbornmusic', 'Slickdiscmusic', 'undergroundsoundsmi', 'TechniqueRecords', 
+                   'SweatRecords', 'Vinylasylum', 'Retrofit_Records', 'HearAgainRecords', 
+                   'groovyrecordsdeland', 'Ledzappa1956', 'secretsounds', 'Truetilldeathrecords', 
+                   'eraser.jax', 'tonevendor', 'deepthoughtsjp', 'GordonLaSalleVinyl', 
+                   'WantListRecords', 'planetrecords', 'armageddonshop', 'Villagevinylandhifi', 
+                   'WannaHearIt', 'lockedgroovellc', 'dj.mikie.love.s', 'normalsrecords', 
+                   'deepgroovesounds1', 'BabysOnFireBaltimore', 'JeffmanMusicEmporium', 
+                   'statestreetrecords', 'gethiprecordings', 'jerrysrecords', 'RevolverRecordsInc', 
+                   'blackdotsbuffalo', 'PrincetonRecordEx', 'recordrunnerusa', 'academyrecords', 
+                   'VinylFantasyBrooklyn', 'Factory-Record', 'humanheadnyc', 'JahAbrams', 
+                   'scottisrecordshop', 'recordgrouchbklyn', 'generationrecords', 
+                   'headsoundsrecords', 'facerecordsnyc', 'needleandgrooverec', 
+                   'RoughTradeNYC', 'MUSICONNECTION', 'longgoneday1', 'swoopy', 
+                   'Black_Gold_Brooklyn', 'Psychic_Brooklyn', 'almostready', 'ez2collect2', 
+                   'LooneyTunesCDs', 'justtracks', 'thevinylplant', 'DeepCutsRecordStore', 
+                   'hopfidelity', 'electric_avenue', 'ByrdlandRecords', 'Jointcustodydc', 'smashdc', 
+                   'RecordExchangeofSS', 'Mobius_Records', 'donutshoppe', 'IRREst.2022', 'thewaxhut', 
+                   'innergrooverecs', 'skyvalley420', 'timzatz', 'tunesonline', 'recordmuseum', 
+                   'phidelityrecords', 'Factory-Record', 'vinyl_dinosaur', 'clariziomusic', 
+                   'EastonExchange', 'doubledeckerrecords', 'RECREV', 'Young-Ones-Records', 
+                   'VertigoMusic449', 'WhitsEndTrading', 'impulsebuyrecords', 'dreaminghuman', 
+                   'Lititz_Music_Co.', 'MUSICALENERGIdotCOM', 'rebrecords-md', 'thevinylgarageus', 
+                   'admiralanalogs', 'FuzzyDogVintage', 'RecordExchangeofSS', 'YellowKShop', 
+                   'solarmountainrecords', 'recordsfromjupiter', 'rainbowrecordsde', 'extendedplay19971', 
+                   'philadelphiamusic', 'brewerytownbeats', 'creep-records', 'MilkcrateCafe', 'vinylaltar', 
+                   'commonbeatmusic', 'sitandspinrecords', 'Betternowrecords', 'impressionsphilly']
+
         for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+            for genre in genres:
+                for seller in sellers:
+                    urlnew = url + seller + '/profile?format=Vinyl' + genre
+                    yield scrapy.Request(url=urlnew, callback=self.parse)
 
 
     def parse(self, response):
@@ -23,7 +75,8 @@ class RecordlistingsPySpider(scrapy.Spider):
                 'label' : response.xpath('//p[@class="hide_mobile label_and_cat"]/a/text()').get(),
                 'itemCatNo' : response.xpath('//p[@class="hide_mobile label_and_cat"]/span[@class="item_catno"]/text()').get(),
                 'sleeveCondition' : response.xpath('//span[@class="item_sleeve_condition"]/text()').get(),
-                'Url' : response.xpath('//a[@class="item_release_link hide_mobile"]').attrib['href'],
+                'rUrl' : response.xpath('//a[@class="item_release_link hide_mobile"]').attrib['href'],
+                'lUrl' : response.xpath('//a[@class="item_description_title"]').attrib['href'],
                 'price' : response.xpath('//span[@class="price"]/text()').get()
             }
 
