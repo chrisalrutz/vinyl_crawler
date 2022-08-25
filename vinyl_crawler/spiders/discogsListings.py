@@ -1,5 +1,5 @@
 import scrapy
-from discogs_crawler.items import Listing
+from vinyl_crawler.items import Listing
 
 class RecordlistingsPySpider(scrapy.Spider):
     name = 'recordListings.py'
