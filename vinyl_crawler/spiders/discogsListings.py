@@ -10,6 +10,7 @@ class RecordlistingsPySpider(scrapy.Spider):
         urls = ['https://www.discogs.com/seller/']
                 
         genres = ['&genre=Electronic',
+                  '&genre=Latin',
                   '&genre=Hip+Hop',
                   '&genre=Jazz',
                   '&genre=Folk%2C+World%2C+%26+Country',
