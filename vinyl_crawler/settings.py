@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'discogs_crawler'
+BOT_NAME = 'vinyl_crawler'
 
-SPIDER_MODULES = ['discogs_crawler.spiders']
-NEWSPIDER_MODULE = 'discogs_crawler.spiders'
+SPIDER_MODULES = ['vinyl_crawler.spiders']
+NEWSPIDER_MODULE = 'vinyl_crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -86,3 +86,5 @@ ROBOTSTXT_OBEY = False
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+
